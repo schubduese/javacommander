@@ -1,0 +1,9 @@
+How to install PJavaCommander:
+
+1. copy the .pjavacommander into your user home (your preferences will be stored there)
+ - Linux: /home/YOUR_USERNAME/
+ - Windows: c:/Documents and Settings/YOUR_USERNAME/
+
+2. execute the run script
+ - Linux: sh run.sh
+ - Windows: doubleclick run.bat

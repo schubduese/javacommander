@@ -1,0 +1,9 @@
+speacial features:
+- md5sum check while copying files (to prevent duplicate files)
+
+bugs:
+- exception while pressing escape in joption dialogues
+
+minor:
+- show error dialog when command not found
+- space tab (takeover opposite path)

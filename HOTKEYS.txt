@@ -1,0 +1,40 @@
+Keyboard Hotkeys for PJavaCommander:
+
+Tab functions: 
+ctrl + t: Open New Tab
+ctrl + w: Close Tab
+ctrl + Page Up: Next Tab 
+ctrl + Page Down: Previous Tab 
+
+File commands (when file(s) selected):
+alt + enter: file properties
+F2: rename file
+F5: copy files to opposite path
+ctrl + o: open file with
+del: delete file(s)
+ctrl + c: copy file
+ctrl + v: paste file
+less or greater (< >): show the file's context menu
+
+Other functions:
+alt + Page Down: Open File Tree down
+ctrl + h: Show path history
+ctrl + r: refresh file list
+ctrl + plus: bigger icons (also image preview)
+ctrl + minus: smaller icons
+ctrl + m: toggle media mode (image and sound file preview)
+ctrl + e: execute a command in the current directory
+alt + left: go dir down
+backspace: go dir down
+ctrl + f: find in current file list
+ctrl + j: add regex pattern for the file list
+
+Address field functions:
+F6: focus address field
+ctrl + backspace: substitute last path in the text field
+
+File Panel functions:
+tab: switch between the panels
+ctrl + 1: panel 1 fullscreen
+ctrl + 2: panel 2 fullscreen
+ctrl + 3: split panels

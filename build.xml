@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project default="compile" name="pjpad" basedir=".">
+	<property name="src" value="./src/java"/>
+	<property name="build" value="./classes"/>
+
+	<path id="compile.classpath">
+		<pathelement location="${build}"/>
+		<fileset dir="${build}">
+			<include name="**/.class"/>
+		</fileset>
+		<fileset dir="./lib">
+			<include name="**/.jar"/>
+		</fileset>
+	</path>
+	
+	<target name="compile">
+		<javac deprecation="on" destdir="${build}" encoding="latin1" srcdir="${src}">
+			<classpath refid="compile.classpath"/>
+		</javac>
+	</target>
+
+</project>
