@@ -1,14 +1,37 @@
 package org.jfm.main;
 
-import java.awt.*;
-import java.awt.event.*;
+import java.awt.AWTEvent;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.Point;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.WindowEvent;
 import java.util.Enumeration;
 import java.util.Hashtable;
 import java.util.Vector;
 
-import javax.swing.*;
+import javax.swing.BorderFactory;
+import javax.swing.ButtonGroup;
+import javax.swing.JColorChooser;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JPanel;
+import javax.swing.JRadioButtonMenuItem;
+import javax.swing.KeyStroke;
+import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
 
-import org.jfm.event.*;
+import org.jfm.event.Broadcaster;
+import org.jfm.event.ChangeViewEvent;
+import org.jfm.event.ColorChangeEvent;
+import org.jfm.event.FontChangeEvent;
 import org.jfm.filesystems.JFMFileSystem;
 import org.jfm.main.configurationdialog.ConfigurationDialog;
 import org.jfm.views.FontDialog;
@@ -25,8 +48,10 @@ import org.jfm.views.JFMViewRepresentation;
  * @version 1.0
  */
 
-public class MainFrame extends JFrame {
-  private JPanel contentPane;
+public class MainFrame extends JFrame 
+{
+
+	private JPanel contentPane;
 
   private JMenuBar jMenuBar1 = new JMenuBar();
   private JMenu jMenuFile = new JMenu();
@@ -57,18 +82,22 @@ public class MainFrame extends JFrame {
 
 
   /**Construct the frame*/
-  public MainFrame() {
+  public MainFrame() 
+  {
     enableEvents(AWTEvent.WINDOW_EVENT_MASK);
-    try {
+    try 
+    {
       jbInit();
     }
-    catch(Exception e) {
+    catch(Exception e) 
+    {
       e.printStackTrace();
     }
   }
 
   /**Component initialization*/
-  private void jbInit() throws Exception  {
+  private void jbInit() throws Exception  
+  {
     Options.setMainFrame(this);
 //    image1 = new ImageIcon(org.jfm.main.MainFrame.class.getResource("openFile.gif"));
     //setIconImage(Toolkit.getDefaultToolkit().createImage(MainFrame.class.getResource("[Your Icon]")));
@@ -179,13 +208,15 @@ public class MainFrame extends JFrame {
     contentPane.add(mainPanel,BorderLayout.CENTER);
   }
   
-  private void showConfDialog(){
+  private void showConfDialog()
+  {
   	ConfigurationDialog d=new ConfigurationDialog(this,"Configuration");
   	d.setLocationRelativeTo(this);
   	d.setVisible(true);
   }
 
-  private void addLookandFeels(){
+  private void addLookandFeels()
+  {
     final UIManager.LookAndFeelInfo[] lfs=  UIManager.getInstalledLookAndFeels();
     //java.util.Arrays.sort(lfs);
     if(lfs!=null){
@@ -205,7 +236,8 @@ public class MainFrame extends JFrame {
     }
   }
   
-  private void changeFont(){
+  private void changeFont()
+  {
   	Font f=FontDialog.showDialog(this,"Choose font",true);
   	if(f==null)return;
   	Options.setPanelsFont(f);
@@ -214,7 +246,8 @@ public class MainFrame extends JFrame {
   	Broadcaster.notifyFontChangeListeners(event);
   }
   
-  private void changeForegroundColors(){
+  private void changeForegroundColors()
+  {
   	Color c=JColorChooser.showDialog(this,"Change foreground",Options.getForegroundColor());
   	if(c==null) return;
   	Options.setForegroundColor(c);
@@ -223,7 +256,8 @@ public class MainFrame extends JFrame {
   	Broadcaster.notifyColorChangeListeners(event);  	
   }
   
-  private void changeBackgroundColors(){  	
+  private void changeBackgroundColors()
+  {  	
   	Color c=JColorChooser.showDialog(this,"Change background",Options.getBackgroundColor());
   	if(c==null) return;
   	Options.setBackgroundColor(c);
@@ -233,19 +267,22 @@ public class MainFrame extends JFrame {
   }
 
   /**File | Seach action*/
-  private void search(){
+  private void search()
+  {
     SearchDialog dialog=new SearchDialog(this,"Search...",false);
     dialog.setLocationRelativeTo(this);
     dialog.setVisible(true);
   }
 
   /**File | Exit action performed*/
-  public void jMenuFileExit_actionPerformed(ActionEvent e) {
+  public void jMenuFileExit_actionPerformed(ActionEvent e) 
+  {
   	Options.savePreferences();
     System.exit(0);
   }
   /**Help | About action performed*/
-  public void jMenuHelpAbout_actionPerformed(ActionEvent e) {
+  public void jMenuHelpAbout_actionPerformed(ActionEvent e) 
+  {
     MainFrame_AboutBox dlg = new MainFrame_AboutBox(this);
     Dimension dlgSize = dlg.getPreferredSize();
     Dimension frmSize = getSize();
@@ -255,7 +292,8 @@ public class MainFrame extends JFrame {
     dlg.setVisible(true);
   }
   /**Overridden so we can exit when window is closed*/
-  protected void processWindowEvent(WindowEvent e) {
+  protected void processWindowEvent(WindowEvent e) 
+  {
     super.processWindowEvent(e);
     if (e.getID() == WindowEvent.WINDOW_CLOSING) {
       jMenuFileExit_actionPerformed(null);
