@@ -1,1 +1,0 @@
-java -cp "classes;lib/commons-logging.jar;lib/jakarta-oro-2.0.8.jar;lib/jdom.jar;lib/jflac-1.2.jar;lib/jl1.0.jar;lib/jogg-0.0.7.jar;lib/jorbis-0.0.15.jar;lib/log4j-1.2.7.jar;lib/looks-2.1.1.jar;lib/mp3spi1.9.4.jar;lib/spring.jar;lib/swing-layout-1.0.jar;lib/tritonus_share.jar" de.pd.pjc.Main
